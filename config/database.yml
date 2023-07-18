@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: arknights_strategies_production
-  username: arknights_strategies
-  password: <%= ENV["ARKNIGHTS_STRATEGIES_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
