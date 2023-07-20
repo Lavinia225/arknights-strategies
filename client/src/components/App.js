@@ -14,11 +14,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Switch>
-          <Route path="/testing">
-            <h1>Test Route</h1>
-          </Route>
           <Route path="/">
-            <h1>Page Count: {count}</h1>
+            <h1>Currently building! Don't mind the void!</h1>
           </Route>
         </Switch>
       </div>
