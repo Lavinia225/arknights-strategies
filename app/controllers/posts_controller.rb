@@ -16,6 +16,17 @@ class PostsController < ApplicationController
         render json: post, status: :created
     end
 
+    def update #Add Error handling for when posts are not found
+        post = Post.find_by(id: params[:id])
+
+        if post.user_id == @current_user.id
+            post.update!(post_params)
+            render json: post, status: :accepted
+        else
+            render json: {errors: ["Not Authorized to modify this post!"]}, status: :unauthorized
+        end
+    end
+
     private
 
     def post_params
