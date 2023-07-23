@@ -5,5 +5,5 @@ class Post < ActiveRecord::Base
 
     validates :title, presence: true
     validates :body, {presence: true, length: {minimum: 100}}
-    validates :user_id
+    validates :user_id, presence: true
 end
