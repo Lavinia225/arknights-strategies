@@ -1,0 +1,2 @@
+class PostOperatorsController < ApplicationController
+end
