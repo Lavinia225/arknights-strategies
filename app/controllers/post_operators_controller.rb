@@ -13,6 +13,7 @@ class PostOperatorsController < ApplicationController
 
     def update
         post_operator = PostOperator.find_by(id: params[:id])
+        post_operator.update!(post_operator_params)
         render json: post_operator, status: :success
     end
 
