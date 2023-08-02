@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :posts
-  resources :post_operators
+  resources :post_operators, exclude: :index
 
   get '*path',
     to: 'fallback#index',
