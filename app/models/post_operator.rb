@@ -5,4 +5,5 @@ class PostOperator < ActiveRecord::Base
     validates :post_id, {presence: true}
     validates :operator_id, {presence: true}
     validates :level, {length: {maximum: 5}}
+    validates :potential, numericality: :only_integer
 end
