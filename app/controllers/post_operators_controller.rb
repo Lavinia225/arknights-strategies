@@ -21,6 +21,16 @@ class PostOperatorsController < ApplicationController
         end
     end
 
+    def destroy
+        post_operator = PostOperator.find_by(id: params[:id])
+        if post_operator.post.user_id == @current_user.id
+            post_operator.destroy
+            head :no_content
+        else
+            render json: {errors: ["Not Authorized to delete this tag!"]}, status: :unauthorized
+        end
+    end
+
     private
 
     def post_operator_params
