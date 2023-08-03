@@ -1,24 +1,19 @@
-# README
+# Arknights Strategies
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my preferred readme template. It will be filled in gradually later.
 
-Things you may want to cover:
+## Usage
 
-* Ruby version
+## Contributing
 
-* System dependencies
+## Project Status
 
-* Configuration
+## Contact
 
-* Database creation
+## Sources
 
-* Database initialization
+## Legal Stuff
 
-* How to run the test suite
+Arknights is copyright of Hypergryph Network Technology Co., Ltd.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License 
