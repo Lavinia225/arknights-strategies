@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     end
 
     def show
-        post = Post.find_by(id: params[:id])
+        post = find_post
         render json: post
     end
 
@@ -14,8 +14,8 @@ class PostsController < ApplicationController
         render json: post, status: :created
     end
 
-    def update #Add Error handling for when posts are not found
-        post = Post.find_by(id: params[:id])
+    def update
+        post = find_post
 
         if post.user_id == @current_user.id
             post.update!(post_params)
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        post = Post.find_by(id: params[:id])
+        post = find_post
 
         if post.user_id == @current_user.id
             post.destroy
@@ -40,5 +40,9 @@ class PostsController < ApplicationController
 
     def post_params
         params.permit(:title, :body)
+    end
+
+    def find_post
+        post = Post.find(params[:id])
     end
 end
