@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :posts
+  resources :posts, :operators
   resources :post_operators, exclude: :index
 
   get '*path',

@@ -1,0 +1,3 @@
+class OperatorsController < ApplicationController
+    
+end
