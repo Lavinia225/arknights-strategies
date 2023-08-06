@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :posts, :operators
+  resources :posts
   resources :post_operators, exclude: :index
+  resources :operators, exclude: :show
 
   get '*path',
     to: 'fallback#index',
