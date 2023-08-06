@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
     
     validates :username, uniqueness: true
     validates :display_name, {uniqueness: true, comparison: {other_than: :username}}
+    validates :access_level, numericality: :only_integer
 end
