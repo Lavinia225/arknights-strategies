@@ -1,16 +1,16 @@
 import { useState, useEffect, useContext } from "react";
 import { Switch, Route } from "react-router-dom";
-import GridTransition from "./GridTransition";
 import { UserContext } from "./context/user";
+import UserBar from './UserBar'
 
 function App() {
   const {user, setUser} = useContext(UserContext)
 
   return (
       <div className="App">
+        <UserBar />
         <Switch>
           <Route exact path="/">
-            <GridTransition />
           </Route>
         </Switch>
       </div>
