@@ -4,7 +4,7 @@ import {useContext} from 'react'
 
 function UserBar() {
     const {user} = useContext(UserContext)
-
+    console.log("Current user is", user)
     
     return(
         <nav id="user-bar">

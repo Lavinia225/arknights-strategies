@@ -5,7 +5,6 @@ import UserBar from './UserBar'
 import LoginForm from './LoginForm'
 
 function App() {
-  const {user, setUser} = useContext(UserContext)
   
   return (
       <div className="App">

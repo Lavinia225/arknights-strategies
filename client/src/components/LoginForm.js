@@ -30,7 +30,7 @@ function LoginForm(){
         const data = await response.json()
         
         if (response.ok){
-            setUser(data)
+            setUser(()=>data)
             history.push('/')
         }
         else{
