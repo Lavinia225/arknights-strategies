@@ -1,6 +1,4 @@
-import { useState, useEffect, useContext } from "react";
 import { Switch, Route } from "react-router-dom";
-import { UserContext } from "./context/user";
 import UserBar from './UserBar'
 import LoginForm from './LoginForm'
 
@@ -12,7 +10,7 @@ function App() {
         <Switch>
           <Route exact path="/">
           </Route>
-          <Route>
+          <Route path='/login'>
             <LoginForm />
           </Route>
         </Switch>
