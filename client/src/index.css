@@ -8,17 +8,7 @@
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-color: #E6E6FA;
 }
 
 #grid-container {
@@ -37,4 +27,22 @@ code {
 .column-5 {
   animation: 4s infinite Ripple;
   background-color: red;
+}
+
+#user-bar {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+#user-bar > button {
+  position: relative;
+  top: 15px;
+  height: 20px;
+}
+
+#user-bar > p {
+  padding-right: 10px;
 }

@@ -4,7 +4,15 @@ import {useContext} from 'react'
 
 function UserBar() {
     const {user, setUser} = useContext(UserContext)
-    console.log("Current user is", user)
+
+    function renderWelcomeAndLogout(){
+        return(
+            <>
+                <p>Welcome, {user.display_name}!</p>
+                <button onClick={logout}>Logout</button>
+            </>
+        )
+    } 
 
     function logout(){
         fetch('/logout', {method: "delete"})
@@ -13,7 +21,7 @@ function UserBar() {
     
     return(
         <nav id="user-bar">
-            {user.id != 0 ? <button onClick={logout}>Logout</button> : <NavLink to='/login'>Login</NavLink>}
+            {user.id !== 0 ? renderWelcomeAndLogout() : <NavLink to='/login'>Login</NavLink>}
         </nav>
     )
 }
