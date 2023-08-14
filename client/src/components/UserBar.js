@@ -12,7 +12,16 @@ function UserBar() {
                 <button onClick={logout}>Logout</button>
             </>
         )
-    } 
+    }
+
+    function renderLoginAndCreateAccount(){
+        return(
+            <>
+                <NavLink to='/login'>Login</NavLink>
+                <NavLink to='/signup'>Create Account</NavLink>
+            </>
+        )
+    }
 
     function logout(){
         fetch('/logout', {method: "delete"})
@@ -21,7 +30,7 @@ function UserBar() {
     
     return(
         <nav id="user-bar">
-            {user.id !== 0 ? renderWelcomeAndLogout() : <NavLink to='/login'>Login</NavLink>}
+            {user.id !== 0 ? renderWelcomeAndLogout() : renderLoginAndCreateAccount()}
         </nav>
     )
 }

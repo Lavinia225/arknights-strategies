@@ -1,6 +1,7 @@
 import { Switch, Route } from "react-router-dom";
 import UserBar from './UserBar'
 import LoginForm from './LoginForm'
+import CreateAccountForm from "./CreateAccountForm";
 
 function App() {
   
@@ -12,6 +13,9 @@ function App() {
           </Route>
           <Route path='/login'>
             <LoginForm />
+          </Route>
+          <Route path='/signup'>
+            <CreateAccountForm />
           </Route>
         </Switch>
       </div>
