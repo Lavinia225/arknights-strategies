@@ -15,7 +15,7 @@ function LoginForm(){
     async function handleSubmit(e){
         e.preventDefault()
 
-        if (formData.username.length < 1 || formData.password.length < 1) return setErrors(["Username or Password is can not be blank."])
+        if (formData.username.length < 1 || formData.password.length < 1) return setErrors(["Username or Password can not be blank."])
 
         const configObject = {
             method: 'POST',
