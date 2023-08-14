@@ -58,7 +58,7 @@ function CreateAccountForm(){
 
     return(
         <>
-            <form onSubmit={handleSubmit}>
+            <form id='new-account-form' onSubmit={handleSubmit}>
                 <label htmlFor='Username'>Username: </label>
                 <input type='text' name='username' value={formData.username} onChange={handleChange}></input>
                 <label htmlFor='Display Name'>Display Name: </label>
