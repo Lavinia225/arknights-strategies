@@ -1,7 +1,6 @@
 import {useState, useContext} from 'react'
 import {useHistory} from 'react-router-dom'
 import { UserContext } from './context/user'
-//State for formData, Context for setting user after successful account creation, history to send to homepage or previous page.
 
 function CreateAccountForm(){
     const [formData, setFormData] = useState({
