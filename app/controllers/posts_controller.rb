@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
     def show
         post = find_post
-        render json: post
+        render json: post, serializer: IndividualPostSerializer, include: ['post_operators.operator']
     end
 
     def create
