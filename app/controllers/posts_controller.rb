@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     
     def index
-        render json: Post.all
+        render json: Post.all, include: ['post_operators.operator']
     end
 
     def show
