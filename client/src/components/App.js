@@ -3,6 +3,7 @@ import UserBar from './UserBar'
 import LoginForm from './LoginForm'
 import CreateAccountForm from "./CreateAccountForm";
 import NavBar from "./NavBar";
+import Forum from './Forum'
 
 function App() {
   
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route path='/signup'>
             <CreateAccountForm />
+          </Route>
+          <Route path='/posts'>
+            <Forum />
           </Route>
         </Switch>
       </div>
