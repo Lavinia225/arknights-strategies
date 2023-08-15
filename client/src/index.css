@@ -53,3 +53,34 @@ body {
   width: 150px;
   justify-content: center;
 }
+
+#operator-tag {
+  font-size: 12px;
+  display: inline;
+  padding-right: 10px;
+  position: relative;
+  top: -15px;
+  left: 10px;
+}
+
+#post-summary {
+  position: relative;
+  top: -20px;
+  left: 10px;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+
+#forum {
+  position: relative;
+  top: 100px;
+  margin: auto;
+  max-width: 50%
+}
+
+#post-preview-dateless {
+  position: relative;
+  top: -20px;
+}

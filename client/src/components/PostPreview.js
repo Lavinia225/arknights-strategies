@@ -1,26 +1,18 @@
 function PostPreview({post}){
-
-    function renderTags(){
-
-    }
-
-    <div id='post-preview'>
-        <h4>{post.title}</h4>
-        {post.tags.map(renderTags)}
-        <p>{post.summary}</p>
-    </div>
+    return(
+        <tr id='post-preview'>
+            <td>
+                <div id="post-preview-dateless">
+                <h3>{post.title}</h3>
+                {post.operators.map(operator => <p id='operator-tag' key={`${post.title} + ${operator.id}`}>{operator.name}</p>)}
+                <p id='post-summary'>{post.summary}</p>
+                </div>
+            </td>
+            <td>
+                <p id='post-updated-at'>{post.updated_at}</p>
+            </td>
+        </tr>
+    )
 }
 
 export default PostPreview
-
-/*
- "post_operators": [
-            {
-                "id": 1,
-                "potential": 6,
-                "level": "5",
-                "operator": {
-                    "id": 1,
-                    "name": "Goldenglow"
-                }
-                */

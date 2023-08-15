@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import PostPreview  from './PostPreview'
 
 function Forum(){
     const [posts, setPosts] = useState([])
@@ -20,8 +21,20 @@ function Forum(){
         }
     }, [])
 console.log(posts)
+
     return(
-        <></>
+        <div id='forum'>
+            {errors.length > 0 && (errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>))}
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Topic: </th>
+                        <th>Last Activity: </th>
+                    </tr>
+                    {posts.map(post => <PostPreview key={post.summary} post={post}/>)}
+                </tbody>
+            </table>
+        </div>
     )
 }
 
