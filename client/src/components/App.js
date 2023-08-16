@@ -20,7 +20,7 @@ function App() {
           <Route path='/signup'>
             <CreateAccountForm />
           </Route>
-          <Route path='/posts'>
+          <Route exact path='/posts'>
             <Forum />
           </Route>
         </Switch>

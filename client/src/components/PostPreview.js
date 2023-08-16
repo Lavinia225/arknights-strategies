@@ -1,7 +1,15 @@
+import {useHistory} from 'react-router-dom'
+
 function PostPreview({post}){
+    const history = useHistory()
+
+    function handleClick(){
+        history.push(`/posts/${post.id}`)
+    }
+
     return(
         <tr id='post-preview'>
-            <td>
+            <td onClick={handleClick}>
                 <div id="post-preview-dateless">
                 <h3>{post.title}</h3>
                 {post.operators.map(operator => <p id='operator-tag' key={`${post.title} + ${operator.id}`}>{operator.name}</p>)}
