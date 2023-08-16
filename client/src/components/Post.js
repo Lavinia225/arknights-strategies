@@ -22,6 +22,18 @@ function Post(){
         }
     }, [])
 
+    function renderOperatorTags(operatorTag){
+        return (
+            <div key={operatorTag.operator.name} id="operator-tag">
+                <p>{operatorTag.operator.name}</p>
+                <span>
+                    <p>Level: {operatorTag.level}</p>
+                    <p>Potential: {operatorTag.potential}</p>
+                </span>
+            </div>
+        )
+    }
+
     if (Object.keys(post).length < 1){
         return <p>Loading...</p>
     }
@@ -29,14 +41,16 @@ function Post(){
     return(
         <>
             {errors.map(error => <li key={error} style={{color: 'red'}}>{error}</li>)}
-            <table>
+            <table id='post'>
                 <tbody>
                     <tr>
                         <th>{post.creator_display_name}</th>
                         <th>{post.title}</th>
                     </tr>
                     <tr>
-                        {/*Operators */}
+                        <td id='tag-container'>
+                                {post.post_operators.map(renderOperatorTags)}
+                        </td>
                         <td>{post.body}</td>
                     </tr>
                 </tbody>

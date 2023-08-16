@@ -84,3 +84,32 @@ table, th, td {
   position: relative;
   top: -20px;
 }
+
+#tag-container {
+  width: 150px;
+  text-align: center;
+}
+
+#operator-tag {
+  position: relative;
+  top: 0px;
+  height: 100px;
+}
+
+#operator-tag > span {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: -20px;
+}
+
+#operator-tag > span > p {
+  padding-right: 10px;
+}
+
+#post {
+  position: relative;
+  margin: auto;
+  max-width: 50%;
+  top: 100px;
+}
