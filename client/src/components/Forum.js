@@ -20,7 +20,6 @@ function Forum(){
             }
         }
     }, [])
-console.log(posts)
 
     return(
         <div id='forum'>

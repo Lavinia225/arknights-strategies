@@ -4,6 +4,7 @@ import LoginForm from './LoginForm'
 import CreateAccountForm from "./CreateAccountForm";
 import NavBar from "./NavBar";
 import Forum from './Forum'
+import Post from './Post'
 
 function App() {
   
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route exact path='/posts'>
             <Forum />
+          </Route>
+          <Route path='/posts/:id'>
+            <Post />
           </Route>
         </Switch>
       </div>
