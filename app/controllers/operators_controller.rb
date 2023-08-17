@@ -3,7 +3,7 @@ class OperatorsController < ApplicationController
     skip_before_action :admin_check, only: :index
 
     def index
-        render json: Operator.all
+        render json: Operator.all.order(:name)
     end
 
     def create
