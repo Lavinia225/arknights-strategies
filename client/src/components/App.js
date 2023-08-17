@@ -27,6 +27,9 @@ function App() {
           <Route path='/posts/:id'>
             <Post />
           </Route>
+          <Route path='/operators'>
+            
+          </Route>
         </Switch>
       </div>
   );
