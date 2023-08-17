@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import Forum from './Forum'
 import Post from './Post'
 import Operators from './Operators'
+import {OperatorProvider} from './context/operator'
 
 function App() {
 
@@ -23,13 +24,17 @@ function App() {
             <CreateAccountForm />
           </Route>
           <Route exact path='/posts'>
-            <Forum />
+            <OperatorProvider>
+              <Forum />
+            </OperatorProvider>
           </Route>
           <Route path='/posts/:id'>
             <Post />
           </Route>
           <Route path='/operators'>
-            <Operators />
+            <OperatorProvider>
+              <Operators />
+            </OperatorProvider>
           </Route>
         </Switch>
       </div>

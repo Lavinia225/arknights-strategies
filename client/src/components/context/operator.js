@@ -4,14 +4,14 @@ const OperatorContext = createContext()
 
 function OperatorProvider({children}){
     const [operators, setOperators] = useState([])
-    comst [operatorErrors, setOperatorErrors] = useState([])
+    const [operatorErrors, setOperatorErrors] = useState([])
 
     useEffect(()=>{
         getOperators()
 
         async function getOperators(){
-            response = await fetch('/operators')
-            data = await response.json()
+            const response = await fetch('/operators')
+            const data = await response.json()
 
             if (response.ok){
                 setOperators(data)
