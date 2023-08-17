@@ -1,7 +1,9 @@
 import {useState, useContext} from 'react'
+import {OperatorContext} from './context/operator'
 
-function NewOperatorForm({handleCreatingStatus, handleNewOperator, handleNewOperatorErrors}){
+function NewOperatorForm({handleCreatingStatus}){
     const [operatorName, setOperatorName] = useState("")
+    const {operators, setOperators, operatorErrors, setOperatorErrors} = useContext(OperatorContext)
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -19,10 +21,10 @@ function NewOperatorForm({handleCreatingStatus, handleNewOperator, handleNewOper
         const data = await response.json()
 
         if (response.ok){
-            handleNewOperator(data)
+            setOperators([...operators, data])
         }
         else{
-            handleNewOperatorErrors(data.errors)
+            setOperatorErrors([...operatorErrors, data.errors])
         }
 
         handleCreatingStatus()

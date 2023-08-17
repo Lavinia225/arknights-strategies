@@ -1,11 +1,11 @@
 import {useState, useContext} from 'react'
-/*import { OperatorContext } from './context/operator'
+import { OperatorContext } from './context/operator'
 
 //This file is untested
 function EditOperatorForm({operator}){
     const [formData, setFormData] = useState({name: operator.name})
     const [errors, setErrors] = useState([])
-    //const {operators, setOperators} = useContext(OperatorContext)
+    const {operators, setOperators} = useContext(OperatorContext)
 
     async function handleSubmit(){
         const configObject = {
@@ -55,5 +55,3 @@ function EditOperatorForm({operator}){
 }
 
 export default EditOperatorForm
-
-*/
