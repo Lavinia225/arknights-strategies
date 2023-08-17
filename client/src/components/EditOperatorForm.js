@@ -1,7 +1,11 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
+import { OperatorContext } from './context/operator'
 
+//This file is untested
 function EditOperatorForm({operator}){
     const [formData, setFormData] = useState({name: operator.name})
+    const [errors, setErrors] = useState([])
+    const {operators, setOperators} = useContext(OperatorContext)
 
     async function handleSubmit(){
         const configObject = {
@@ -17,10 +21,20 @@ function EditOperatorForm({operator}){
         const data = await response.json()
 
         if (response.ok){
-            //find the operator in operators with the correct id, replace them, and then put the newly mapped array as the new operators array
+            updatedOperators = operators.map(findAndReplaceUpdatedOperator)
+            setOperators(updatedOperators)
         }
         else{
-            //Add an error that is specific to this component and render that error above the form
+            setErrors([...errors, data.errors])
+        }
+
+        function findAndReplaceUpdatedOperator(oldOperator){
+            if (oldOperator.id === operator.id){
+                return data
+            }
+            else{
+                return oldOperator
+            }
         }
     }
 
@@ -41,5 +55,3 @@ function EditOperatorForm({operator}){
 }
 
 export default EditOperatorForm
-
-//This file is untested
