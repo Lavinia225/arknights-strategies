@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :posts
   resources :post_operators, exclude: :index
-  resources :operators, exclude: :show
+  resources :operators
 
   get '*path',
     to: 'fallback#index',

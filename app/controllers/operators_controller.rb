@@ -6,19 +6,24 @@ class OperatorsController < ApplicationController
         render json: Operator.all.order(:name)
     end
 
+    def show
+        operator = find_operator
+        render json: operator
+    end
+
     def create
         operator = Operator.create!(operator_params)
         render json: operator, status: :created
     end
 
     def update
-        operator = Operator.find(params[:id])
+        operator = find_operator
         operator.update!(operator_params)
         render json: operator, status: :accepted
     end
 
     def destroy
-        operator = Operator.find(params[:id])
+        operator = find_operator
         operator.destroy
         head :no_content
     end
@@ -31,5 +36,9 @@ class OperatorsController < ApplicationController
 
     def operator_params
         params.permit(:name)
+    end
+
+    def find_operator
+        Operator.find(params[:id])
     end
 end
