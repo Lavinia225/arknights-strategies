@@ -7,7 +7,9 @@ function EditOperatorForm({operator}){
     const [errors, setErrors] = useState([])
     const {operators, setOperators} = useContext(OperatorContext)
 
-    async function handleSubmit(){
+    async function handleSubmit(e){
+        e.preventDefault()
+
         const configObject = {
             method: "PATCH",
             headers: {
@@ -17,7 +19,7 @@ function EditOperatorForm({operator}){
             body: JSON.stringify(formData)
         }
 
-        const response = await fetch(`operators/${operator.id}`, configObject)
+        const response = await fetch(`/operators/${operator.id}`, configObject)
         const data = await response.json()
 
         if (response.ok){
@@ -39,7 +41,7 @@ function EditOperatorForm({operator}){
     }
 
     function handleChange(e){
-        setFormData(e.target.value)
+        setFormData({name: e.target.value})
     }
 
     return(
