@@ -9,7 +9,7 @@ function NavBar(){
         <nav>
             <NavLink to='/'>Home</NavLink>
             <NavLink to='/posts'>Forum</NavLink>
-            {user.access_level > 0 ? <NavLink to='/operators'>operators</NavLink> : null}
+            {user.access_level > 0 ? <NavLink to='/operators'>Operators</NavLink> : null}
         </nav>        
     )
 }

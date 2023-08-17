@@ -25,7 +25,7 @@ function UserBar() {
 
     function logout(){
         fetch('/logout', {method: "delete"})
-        .then(setUser({id: 0, displayName: null}))
+        .then(setUser({id: 0, displayName: null, access_level: 0}))
     }
     
     return(
