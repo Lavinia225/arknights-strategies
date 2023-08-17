@@ -11,6 +11,12 @@ class OperatorsController < ApplicationController
         render json: operator, status: :created
     end
 
+    def update
+        operator = Operator.find(params[:id])
+        operator.update!(operator_params)
+        render json: operator, status: :accepted
+    end
+
     def destroy
         operator = Operator.find(params[:id])
         operator.destroy
