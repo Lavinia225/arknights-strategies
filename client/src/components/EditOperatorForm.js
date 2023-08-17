@@ -1,8 +1,7 @@
 import {useState, useContext} from 'react'
 import { OperatorContext } from './context/operator'
 
-//This file is untested
-function EditOperatorForm({operator}){
+function EditOperatorForm({operator, handleUpdatedOperator}){
     const [formData, setFormData] = useState({name: operator.name})
     const [errors, setErrors] = useState([])
     const {operators, setOperators} = useContext(OperatorContext)
@@ -25,6 +24,7 @@ function EditOperatorForm({operator}){
         if (response.ok){
             const updatedOperators = operators.map(findAndReplaceUpdatedOperator)
             setOperators(updatedOperators)
+            handleUpdatedOperator(data)
         }
         else{
             setErrors([...errors, data.errors])

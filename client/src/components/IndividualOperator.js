@@ -27,10 +27,15 @@ function IndividualOperator(){
         setEditing(true)
     }
 
+    function handleUpdatedOperator(updatedOperator){
+        setOperator(updatedOperator)
+        setEditing(false)
+    }
+
     return(
         <>
         {errors.length > 0 ? errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>) : null}
-        {editing ? <EditOperatorForm operator={operator} /> :
+        {editing ? <EditOperatorForm operator={operator} handleUpdatedOperator={handleUpdatedOperator}/> :
             <div id='individual-operator'>
                 <p>{operator.name}</p>
                 <button onClick={handleEditClick}>Edit</button>
