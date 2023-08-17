@@ -7,6 +7,7 @@ import Forum from './Forum'
 import Post from './Post'
 import Operators from './Operators'
 import {OperatorProvider} from './context/operator'
+import IndividualOperator from "./IndividualOperator";
 
 function App() {
 

@@ -21,7 +21,7 @@ function EditOperatorForm({operator}){
         const data = await response.json()
 
         if (response.ok){
-            updatedOperators = operators.map(findAndReplaceUpdatedOperator)
+            const updatedOperators = operators.map(findAndReplaceUpdatedOperator)
             setOperators(updatedOperators)
         }
         else{
