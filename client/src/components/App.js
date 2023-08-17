@@ -5,9 +5,10 @@ import CreateAccountForm from "./CreateAccountForm";
 import NavBar from "./NavBar";
 import Forum from './Forum'
 import Post from './Post'
+import Operators from './Operators'
 
 function App() {
-  
+
   return (
       <div className="App">
         <UserBar />
@@ -28,7 +29,7 @@ function App() {
             <Post />
           </Route>
           <Route path='/operators'>
-            
+            <Operators />
           </Route>
         </Switch>
       </div>
