@@ -1,12 +1,15 @@
 import EditOperatorForm from "./EditOperatorForm"
-import {useParams} from 'react-router-dom'
-import {useEffect, useState} from 'react'
+import {useParams, useHistory} from 'react-router-dom'
+import {useEffect, useState, useContext} from 'react'
+import { OperatorContext } from "./context/operator"
 
 function IndividualOperator(){
     const params = useParams()
+    const history = useHistory()
     const [editing, setEditing] = useState(false)
     const [errors, setErrors] = useState([])
     const [operator, setOperator] = useState({name: ""})
+    const {operators, setOperators} = useContext(OperatorContext)
 
     useEffect(()=>{
         setOperator(getOperator)
@@ -32,6 +35,23 @@ function IndividualOperator(){
         setEditing(false)
     }
 
+    async function handleDelete(){
+        const response = await fetch(`/operators/${params.id}`, {method: 'DELETE'})
+
+        if (response.ok){
+            const updatedOperators = operators.filter(oldOperator => {
+                return oldOperator.id != params.id
+            })
+            console.log(updatedOperators)
+            setOperators(updatedOperators)
+            history.push('/operators')
+        }
+        else{
+            const newErrors = await response.json()
+            setErrors([...errors, newErrors])
+        }
+    }
+
     return(
         <>
         {errors.length > 0 ? errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>) : null}
@@ -39,6 +59,7 @@ function IndividualOperator(){
             <div id='individual-operator'>
                 <p>{operator.name}</p>
                 <button onClick={handleEditClick}>Edit</button>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         }
         </>
