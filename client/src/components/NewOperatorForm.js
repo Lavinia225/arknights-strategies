@@ -8,7 +8,6 @@ function NewOperatorForm({handleCreatingStatus}){
     async function handleSubmit(e){
         e.preventDefault()
 
-        console.log(operatorName)
         const configObject = {
             method: 'POST',
             headers: {
