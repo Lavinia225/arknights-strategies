@@ -2,6 +2,7 @@ import EditOperatorForm from "./EditOperatorForm"
 import {useParams, useHistory} from 'react-router-dom'
 import {useEffect, useState, useContext} from 'react'
 import { OperatorContext } from "./context/operator"
+import { UserContext } from "./context/user"
 
 function IndividualOperator(){
     const params = useParams()
@@ -10,6 +11,7 @@ function IndividualOperator(){
     const [errors, setErrors] = useState([])
     const [operator, setOperator] = useState({name: ""})
     const {operators, setOperators} = useContext(OperatorContext)
+    const {user} = useContext(UserContext)
 
     useEffect(()=>{
         setOperator(getOperator)
@@ -21,7 +23,7 @@ function IndividualOperator(){
                 setOperator(data)
             }
             else{
-                setErrors(data.errors)
+                setErrors([...errors, data.errors])
             }
         }
     }, [])
@@ -42,16 +44,18 @@ function IndividualOperator(){
             const updatedOperators = operators.filter(oldOperator => {
                 return oldOperator.id != params.id
             })
-            console.log(updatedOperators)
             setOperators(updatedOperators)
             history.push('/operators')
         }
         else{
-            const newErrors = await response.json()
-            setErrors([...errors, newErrors])
+            const data = await response.json()
+            setErrors([...errors, data.errors])
         }
     }
-
+    if (user.access_level < 1){
+        return <h1 style={{color: 'purple'}}>You are not authorized to be here.</h1>
+    }
+    
     return(
         <>
         {errors.length > 0 ? errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>) : null}
