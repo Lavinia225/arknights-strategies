@@ -14,29 +14,30 @@ function App() {
       <div className="App">
         <UserBar />
         <NavBar />
-        <Switch>
-          <Route exact path="/">
-          </Route>
-          <Route path='/login'>
-            <LoginForm />
-          </Route>
-          <Route path='/signup'>
-            <CreateAccountForm />
-          </Route>
-          <Route exact path='/posts'>
-            <OperatorProvider>
-              <Forum />
-            </OperatorProvider>
-          </Route>
-          <Route path='/posts/:id'>
-            <Post />
-          </Route>
-          <Route path='/operators'>
-            <OperatorProvider>
-              <Operators />
-            </OperatorProvider>
-          </Route>
-        </Switch>
+        <OperatorProvider>
+          <Switch>
+            <Route exact path="/">
+            </Route>
+            <Route path='/login'>
+              <LoginForm />
+            </Route>
+            <Route path='/signup'>
+              <CreateAccountForm />
+            </Route>
+            <Route exact path='/posts'>
+                <Forum />
+            </Route>
+            <Route path='/posts/:id'>
+              <Post />
+            </Route>
+            <Route path='/operators/:id'>
+              <IndividualOperator />
+            </Route>
+            <Route path='/operators'>
+                <Operators />
+            </Route>
+          </Switch>
+        </OperatorProvider>
       </div>
   );
 }

@@ -15,7 +15,7 @@ function Operators(){
     }
 
     function handleClick(id){
-        history.push(`/operators/${id}`) //Note that the Operators controller has no edit action right now.
+        history.push(`/operators/${id}`)
     }
 
     function handleCreatingStatus(){
