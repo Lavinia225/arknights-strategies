@@ -1,6 +1,7 @@
 import {useState, useContext} from 'react'
 import {OperatorContext} from '../context/operator'
 
+//Make sure to ensure name isn't blank before submitting
 function NewOperatorForm({handleCreatingStatus}){
     const [operatorName, setOperatorName] = useState("")
     const {operators, setOperators, operatorErrors, setOperatorErrors} = useContext(OperatorContext)
