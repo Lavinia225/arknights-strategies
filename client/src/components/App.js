@@ -5,6 +5,7 @@ import CreateAccountForm from "./user_related/CreateAccountForm";
 import NavBar from "./user_related/NavBar";
 import Forum from './post_related/Forum'
 import Post from './post_related/Post'
+import NewPostForm from './post_related/NewPostForm'
 import Operators from './operator_related/Operators'
 import {OperatorProvider} from './context/operator'
 import IndividualOperator from "./operator_related/IndividualOperator";
@@ -27,6 +28,9 @@ function App() {
             </Route>
             <Route exact path='/posts'>
                 <Forum />
+            </Route>
+            <Route path='/posts/new'>
+              <NewPostForm />
             </Route>
             <Route path='/posts/:id'>
               <Post />

@@ -1,7 +1,9 @@
 import {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import PostPreview  from './PostPreview'
 
 function Forum(){
+    const history = useHistory()
     const [posts, setPosts] = useState([])
     const [errors, setErrors] = useState([])
 
@@ -21,9 +23,13 @@ function Forum(){
         }
     }, [])
 
+    function handleCreatePostClick(){
+        history.push('/posts/new')
+    }
     return(
         <div id='forum'>
             {errors.length > 0 && (errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>))}
+            <button onClick={handleCreatePostClick}>New Post</button>
             <table>
                 <tbody>
                     <tr>
