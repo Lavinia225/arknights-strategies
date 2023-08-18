@@ -1,13 +1,13 @@
 import { Switch, Route } from "react-router-dom";
-import UserBar from './UserBar'
-import LoginForm from './LoginForm'
-import CreateAccountForm from "./CreateAccountForm";
-import NavBar from "./NavBar";
-import Forum from './Forum'
-import Post from './Post'
-import Operators from './Operators'
+import UserBar from './user_related/UserBar'
+import LoginForm from './user_related/LoginForm'
+import CreateAccountForm from "./user_related/CreateAccountForm";
+import NavBar from "./user_related/NavBar";
+import Forum from './post_related/Forum'
+import Post from './post_related/Post'
+import Operators from './operator_related/Operators'
 import {OperatorProvider} from './context/operator'
-import IndividualOperator from "./IndividualOperator";
+import IndividualOperator from "./operator_related/IndividualOperator";
 
 function App() {
 

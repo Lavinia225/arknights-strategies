@@ -1,5 +1,5 @@
 import {useState, useContext} from 'react'
-import {OperatorContext} from './context/operator'
+import {OperatorContext} from '../context/operator'
 
 function NewOperatorForm({handleCreatingStatus}){
     const [operatorName, setOperatorName] = useState("")

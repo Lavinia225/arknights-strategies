@@ -1,6 +1,6 @@
 import {useContext, useState} from 'react'
-import { OperatorContext } from "./context/operator"
-import {UserContext} from './context/user'
+import { OperatorContext } from "../context/operator"
+import {UserContext} from '../context/user'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import NewOperatorForm from './NewOperatorForm'
 

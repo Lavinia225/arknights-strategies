@@ -1,5 +1,5 @@
 import {useState, useContext} from 'react'
-import { OperatorContext } from './context/operator'
+import { OperatorContext } from '../context/operator'
 
 function EditOperatorForm({operator, handleUpdatedOperator}){
     const [formData, setFormData] = useState({name: operator.name})

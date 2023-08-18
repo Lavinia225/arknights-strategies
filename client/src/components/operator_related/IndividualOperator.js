@@ -1,8 +1,8 @@
 import EditOperatorForm from "./EditOperatorForm"
 import {useParams, useHistory} from 'react-router-dom'
 import {useEffect, useState, useContext} from 'react'
-import { OperatorContext } from "./context/operator"
-import { UserContext } from "./context/user"
+import { OperatorContext } from "../context/operator"
+import { UserContext } from "../context/user"
 
 function IndividualOperator(){
     const params = useParams()
