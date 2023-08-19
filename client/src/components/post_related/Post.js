@@ -37,7 +37,7 @@ function Post(){
         )
     }
 
-    async function handleDelete(){
+    async function handleDeletePost(){
         const confirmation = window.confirm("Are you sure you want to delete this post and the associated operator tags?")
 
         if (confirmation){
@@ -62,7 +62,7 @@ function Post(){
             {errors.map(error => <li key={error} style={{color: 'red'}}>{error}</li>)}
             {user.id === post.user_id ? <div id='post-edit-delete-buttons'>
                 <button>Edit (Useless)</button>
-                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleDeletePost}>Delete</button>
             </div> : null}
             <table id='post'>
                 <tbody>
