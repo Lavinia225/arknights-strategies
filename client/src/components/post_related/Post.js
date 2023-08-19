@@ -1,11 +1,13 @@
 import {useState, useEffect, useContext} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import {UserContext} from '../context/user'
+import EditPostForm from './EditPostForm'
 
 function Post(){
     const params = useParams()
     const history = useHistory()
     const {user} = useContext(UserContext)
+    const [editing, setEditing] = useState(false)
     const [post, setPost] = useState({})
     const [errors, setErrors] = useState([])
 
@@ -53,6 +55,16 @@ function Post(){
         }
     }
 
+
+    function handleUpdatedPost(updatedPost){
+        setEditing(false)
+        setPost(updatedPost)
+    }
+
+    function handleEditPostClick(){
+        setEditing(!editing)
+    }
+
     if (Object.keys(post).length < 1){
         return <p>Loading...</p>
     }
@@ -61,9 +73,10 @@ function Post(){
         <>
             {errors.map(error => <li key={error} style={{color: 'red'}}>{error}</li>)}
             {user.id === post.user_id ? <div id='post-edit-delete-buttons'>
-                <button>Edit (Useless)</button>
+                <button onClick={handleEditPostClick}>{editing ? 'Cancel Editing' : 'Edit'}</button>
                 <button onClick={handleDeletePost}>Delete</button>
             </div> : null}
+            {editing ? <EditPostForm post={post} handleUpdatedPost={handleUpdatedPost}/> :
             <table id='post'>
                 <tbody>
                     <tr>
@@ -78,6 +91,7 @@ function Post(){
                     </tr>
                 </tbody>
             </table>
+            }
         </>
     )
 

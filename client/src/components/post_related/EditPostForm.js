@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function EditPostForm({post}){
+function EditPostForm({post, handleUpdatedPost}){
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({
         title: post.title,
@@ -23,7 +23,7 @@ function EditPostForm({post}){
         const data = await response.json()
 
         if (response.ok){
-            //call the function provided by Post to update the post in stage and cancel edit state
+            handleUpdatedPost(data)
         }
         else{
             setErrors([data.errors])
