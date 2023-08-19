@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
         if post.user_id == @current_user.id
             post.update!(post_params)
-            render json: post, status: :accepted
+            render json: post, serializer: IndividualPostSerializer, include: ['post_operators.operator'], status: :accepted
         else
             render json: {errors: ["Not Authorized to modify this post!"]}, status: :unauthorized
         end

@@ -19,7 +19,7 @@ function EditPostForm({post, handleUpdatedPost}){
             body: JSON.stringify(formData)
         }
 
-        const response = await fetch(`/posts/${post.id}`)
+        const response = await fetch(`/posts/${post.id}`, configObject)
         const data = await response.json()
 
         if (response.ok){
@@ -29,7 +29,7 @@ function EditPostForm({post, handleUpdatedPost}){
             setErrors([data.errors])
         }
     }
-    
+
     function handleChange(e){
         setFormData({...formData, [e.target.name]: e.target.value})
     }
