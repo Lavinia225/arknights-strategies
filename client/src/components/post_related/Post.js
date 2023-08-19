@@ -1,10 +1,13 @@
-import {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useState, useEffect, useContext} from 'react'
+import {useParams, useHistory} from 'react-router-dom'
+import {UserContext} from '../context/user'
 
 function Post(){
+    const params = useParams()
+    const history = useHistory()
+    const {user} = useContext(UserContext)
     const [post, setPost] = useState({})
     const [errors, setErrors] = useState([])
-    const params = useParams()
 
     useEffect(()=>{
         getPost()
@@ -17,7 +20,7 @@ function Post(){
                 setPost(data)
             }
             else{
-                setErrors(data.errors)
+                setErrors([data.errors])
             }
         }
     }, [])
@@ -34,6 +37,22 @@ function Post(){
         )
     }
 
+    async function handleDelete(){
+        const confirmation = window.confirm("Are you sure you want to delete this post and the associated operator tags?")
+
+        if (confirmation){
+            const response = await fetch(`/posts/${post.id}`, {method: 'DELETE'})
+            
+            if (response.ok){
+                history.push('/posts')
+            }
+            else{
+                const data = await response.json()
+                setErrors([data.errors])
+            }
+        }
+    }
+
     if (Object.keys(post).length < 1){
         return <p>Loading...</p>
     }
@@ -41,6 +60,10 @@ function Post(){
     return(
         <>
             {errors.map(error => <li key={error} style={{color: 'red'}}>{error}</li>)}
+            {user.id === post.user_id ? <div id='post-edit-delete-buttons'>
+                <button>Edit (Useless)</button>
+                <button onClick={handleDelete}>Delete</button>
+            </div> : null}
             <table id='post'>
                 <tbody>
                     <tr>

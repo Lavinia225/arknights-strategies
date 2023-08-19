@@ -66,3 +66,9 @@ function NewPostForm(){
 }
 
 export default NewPostForm
+
+//Need a component to make new post operator. It needs to let you select or type out an operator name from the total operator list, as well as set their potential
+//And level. So the operator id would be equal to the... operator id, and the post id will be grabbed from this component, which is the parent component.
+//As the parent component, it will need to be able to have connected errors with the postoperatorform, and keep a list of the postoperators being added with itself.
+//Altneratively, these could be added after the post is created and then handled on the post's individual page, so post operators can be made one at a time
+//in a cleaner manner
