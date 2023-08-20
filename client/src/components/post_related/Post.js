@@ -47,6 +47,17 @@ function Post(){
         }
     }
 
+    function handleNewTag(response, data){
+        if (response.ok){
+            const updatedTags = [...post.post_operators, data]
+            setPost({...post, post_operators: updatedTags})
+        }
+        else{
+            setErrors([data.errors])
+        }
+        setCreatingTag(false)
+    }
+
     function handleUpdatedPost(updatedPost){
         setEditing(false)
         setPost(updatedPost)
@@ -80,7 +91,7 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                            {creatingTag ? <NewTagForm auth={user.id === post.user_id} stopCreating={handleCreateTagButton} />
+                            {creatingTag ? <NewTagForm auth={user.id === post.user_id} stopCreating={handleCreateTagButton} handleNewTag={handleNewTag}/>
                             : <button onClick={handleCreateTagButton}>Create Tag</button>}
                             {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} />)}
                         </td>

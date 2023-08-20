@@ -37,7 +37,7 @@ class PostOperatorsController < ApplicationController
     private
 
     def post_operator_params
-        params.permit(:level, :potential)
+        params.permit(:level, :potential, :operator_id)
     end
 
     def find_post_operator
