@@ -44,7 +44,6 @@ function Post(){
         }
     }
 
-
     function handleUpdatedPost(updatedPost){
         setEditing(false)
         setPost(updatedPost)
@@ -74,7 +73,7 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                                {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} />)}
+                                {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} />)}
                         </td>
                         <td>{post.body}</td>
                     </tr>
