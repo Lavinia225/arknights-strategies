@@ -57,7 +57,7 @@ function Post(){
     }
 
     function handleCreateTagButton(){
-        setCreatingTag(true)
+        setCreatingTag(!creatingTag)
     }
 
     if (Object.keys(post).length < 1){
@@ -80,7 +80,8 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                            {creatingTag ? <NewTagForm auth={user.id === post.user_id}/>: <button onClick={handleCreateTagButton}>Create Tag</button>}
+                            {creatingTag ? <NewTagForm auth={user.id === post.user_id} stopCreating={handleCreateTagButton} />
+                            : <button onClick={handleCreateTagButton}>Create Tag</button>}
                             {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} />)}
                         </td>
                         <td>{post.body}</td>
