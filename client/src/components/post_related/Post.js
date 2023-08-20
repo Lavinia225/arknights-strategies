@@ -2,6 +2,7 @@ import {useState, useEffect, useContext} from 'react'
 import {useParams, useHistory} from 'react-router-dom'
 import {UserContext} from '../context/user'
 import EditPostForm from './EditPostForm'
+import PostTag from './PostTag'
 
 function Post(){
     const params = useParams()
@@ -26,18 +27,6 @@ function Post(){
             }
         }
     }, [])
-
-    function renderOperatorTags(operatorTag){
-        return (
-            <div key={operatorTag.operator.name} id="operator-tag">
-                <p>{operatorTag.operator.name}</p>
-                <span>
-                    <p>Level: {operatorTag.level}</p>
-                    <p>Potential: {operatorTag.potential}</p>
-                </span>
-            </div>
-        )
-    }
 
     async function handleDeletePost(){
         const confirmation = window.confirm("Are you sure you want to delete this post and the associated operator tags?")
@@ -85,7 +74,7 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                                {post.post_operators.map(renderOperatorTags)}
+                                {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} />)}
                         </td>
                         <td>{post.body}</td>
                     </tr>
