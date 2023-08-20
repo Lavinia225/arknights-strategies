@@ -2,7 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import UserBar from './user_related/UserBar'
 import LoginForm from './user_related/LoginForm'
 import CreateAccountForm from "./user_related/CreateAccountForm";
-import NavBar from "./user_related/NavBar";
+import NavBar from "./NavBar";
 import Forum from './post_related/Forum'
 import Post from './post_related/Post'
 import NewPostForm from './post_related/NewPostForm'

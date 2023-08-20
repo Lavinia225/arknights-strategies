@@ -29,8 +29,11 @@ function Operators(){
     else{
         return (
             <>
-                {isCreating ? <NewOperatorForm handleCreatingStatus={handleCreatingStatus}/> : <button onClick={()=>setIsCreating(true)}>New Operator</button>}
-                <ul>
+                <div id='create-new-operator'>
+                    {isCreating ? <NewOperatorForm handleCreatingStatus={handleCreatingStatus}/> :
+                    <button onClick={()=>setIsCreating(true)}>New Operator</button>}
+                </div>
+                <ul id='operator-list'>
                     {operatorErrors.length > 0 ? operatorErrors.map(error => <li key={error} style={{color: 'red'}}>{error}</li>): null}
                     {operators.length > 0 ? operators.map(renderOperators) : null}
                 </ul>

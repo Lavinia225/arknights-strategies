@@ -113,3 +113,30 @@ table, th, td {
   max-width: 50%;
   top: 100px;
 }
+
+#operator-list {
+  display: grid;
+  height: 60vh;
+  width: 100vh;
+  margin: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#operator-list > li {
+  height: 100%;
+  width: 100px;
+}
+
+#navbar {
+  text-align: center;
+}
+
+#navbar > a {
+  padding-right: 10px;
+}
+
+#create-new-operator {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
