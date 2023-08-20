@@ -8,12 +8,15 @@ function PostTag({operatorTag, auth}){
 
     return (
         <div id="operator-tag">
-                <p>{}{operatorTag.operator.name}</p>
+                <p>
+                    {auth ? <span>✎</span> : null}
+                    {operatorTag.operator.name}
+                    {auth ? <span>Delete icon</span> : null}
+                </p>
                 <span>
                     <p>Level: {operatorTag.level}</p>
                     <p>Potential: {operatorTag.potential}</p>
                 </span>
-                {auth ? <p>meow</p> : <p>bork</p>}
         </div>
     )
 }

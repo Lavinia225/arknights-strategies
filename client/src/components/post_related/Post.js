@@ -9,6 +9,8 @@ function Post(){
     const history = useHistory()
     const {user} = useContext(UserContext)
     const [editing, setEditing] = useState(false)
+    const [editingTags, setEditingTags] = useState(false)
+    const [creatingTag, setCreatingTag] = useState(false)
     const [post, setPost] = useState({})
     const [errors, setErrors] = useState([])
 
@@ -73,7 +75,8 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                                {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} />)}
+                            {creatingTag ? <NewTagForm auth={user.id === post.user_id}/>: null}
+                            {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} />)}
                         </td>
                         <td>{post.body}</td>
                     </tr>
