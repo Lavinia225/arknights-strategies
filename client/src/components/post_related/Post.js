@@ -3,6 +3,7 @@ import {useParams, useHistory} from 'react-router-dom'
 import {UserContext} from '../context/user'
 import EditPostForm from './EditPostForm'
 import PostTag from './PostTag'
+import NewTagForm from './NewTagForm'
 
 function Post(){
     const params = useParams()
@@ -55,6 +56,10 @@ function Post(){
         setEditing(!editing)
     }
 
+    function handleCreateTagButton(){
+        setCreatingTag(true)
+    }
+
     if (Object.keys(post).length < 1){
         return <p>Loading...</p>
     }
@@ -75,7 +80,7 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                            {creatingTag ? <NewTagForm auth={user.id === post.user_id}/>: null}
+                            {creatingTag ? <NewTagForm auth={user.id === post.user_id}/>: <button onClick={handleCreateTagButton}>Create Tag</button>}
                             {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} />)}
                         </td>
                         <td>{post.body}</td>
