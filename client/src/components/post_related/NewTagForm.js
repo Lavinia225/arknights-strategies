@@ -23,7 +23,7 @@ function NewTagForm({auth, stopCreating, handleNewTag}){
             },
             body: JSON.stringify(formData)
         }
-        console.log(configObject)
+        
         const response = await fetch('/post_operators', configObject)
         const data = await response.json()
 

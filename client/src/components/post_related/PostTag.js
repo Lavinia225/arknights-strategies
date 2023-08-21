@@ -1,14 +1,16 @@
 function PostTag({operatorTag, auth, handleDeletedTag}){
     async function handleDelete(){
-        const response = await fetch(`/post_operators/${operatorTag.id}`, {method: "DELETE"})
-        
-        handleDeletedTag(response, operatorTag.id)
+        if(window.confirm(`Are you sure you want to delete ${operatorTag.operator.name}'s tag?`)){
+            const response = await fetch(`/post_operators/${operatorTag.id}`, {method: "DELETE"})
+
+            handleDeletedTag(response, operatorTag.id)
+        }
     }
 
     return (
         <div id="operator-tag">
                 <p>
-                    {auth ? <span>✎</span> : null}
+                    {auth ? <span onClick={handleEdit}>✎</span> : null}
                     {operatorTag.operator.name}
                     {auth ? <span onClick={handleDelete}>Delete icon</span> : null}
                 </p>
