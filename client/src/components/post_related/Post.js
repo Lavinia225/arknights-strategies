@@ -10,7 +10,6 @@ function Post(){
     const history = useHistory()
     const {user} = useContext(UserContext)
     const [editing, setEditing] = useState(false)
-    const [editingTags, setEditingTags] = useState(false)
     const [creatingTag, setCreatingTag] = useState(false)
     const [post, setPost] = useState({})
     const [errors, setErrors] = useState([])
