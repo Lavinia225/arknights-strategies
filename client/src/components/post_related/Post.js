@@ -63,6 +63,17 @@ function Post(){
         setPost(updatedPost)
     }
 
+    async function handleDeletedTag(response, deletedId){
+        if (response.ok){
+            const updatedTags = [...post.post_operators.filter(tag => tag.id !== deletedId )]
+            setPost({...post, post_operators: updatedTags})
+        }
+        else{
+            const data = response.json()
+            setErrors([data.errors])
+        }
+    }
+
     function handleEditPostClick(){
         setEditing(!editing)
     }
@@ -93,7 +104,7 @@ function Post(){
                         <td id='tag-container'>
                             {creatingTag ? <NewTagForm auth={user.id === post.user_id} stopCreating={handleCreateTagButton} handleNewTag={handleNewTag}/>
                             : <button onClick={handleCreateTagButton}>Create Tag</button>}
-                            {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} />)}
+                            {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} handleDeletedTag={handleDeletedTag}/>)}
                         </td>
                         <td>{post.body}</td>
                     </tr>
