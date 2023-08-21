@@ -2,7 +2,7 @@ import {useState, useContext} from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { OperatorContext } from '../context/operator'
 
-function EditTagForm({operatorTag, cancelEdit}){
+function EditTagForm({operatorTag, cancelEdit, handleUpdatedTag}){
     const params = useParams()
     const {operators} = useContext(OperatorContext)
     const [select, setSelect] = useState(operatorTag.operator.name)
@@ -26,7 +26,9 @@ function EditTagForm({operatorTag, cancelEdit}){
         }
     }
 
-    async function handleSubmit(){
+    async function handleSubmit(e){
+        e.preventDefault()
+
         const configObject = {
             method: "PATCH",
             headers: {
@@ -38,6 +40,9 @@ function EditTagForm({operatorTag, cancelEdit}){
 
         const response = await fetch(`/post_operators/${operatorTag.id}`, configObject)
         const data = await response.json()
+
+        handleUpdatedTag(response, data)
+        cancelEdit()
     }
 
     return(
