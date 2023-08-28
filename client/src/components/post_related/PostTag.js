@@ -25,9 +25,9 @@ function PostTag({operatorTag, auth, handleDeletedTag, handleUpdatedTag}){
             {!editing ? 
                 <>
                     <p>
-                        {auth ? <span onClick={handleEditButtonClick}>✎</span> : null}
+                        {auth ? <span onClick={handleEditButtonClick}>✎ </span> : null}
                         {operatorTag.operator.name}
-                        {auth ? <span onClick={handleDelete}>Delete icon</span> : null}
+                        {auth ? <span onClick={handleDelete}> ♻</span> : null}
                     </p>
                     <span>
                         <p>Level: {operatorTag.level}</p>

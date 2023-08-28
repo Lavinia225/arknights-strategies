@@ -35,7 +35,7 @@ function EditPostForm({post, handleUpdatedPost}){
     }
 
     return (
-        <>
+        <div id='edit-post'>
         {errors.length > 0 ? errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>) : null}
         <form onSubmit={handleSubmit}>
             <label htmlFor='title'>Title: </label>
@@ -44,7 +44,7 @@ function EditPostForm({post, handleUpdatedPost}){
             <textarea name='body' rows='20' cols='100' onChange={handleChange} value={formData.body}/>
             <button type='submit'>Submit</button>
         </form>
-        </>
+        </div>
     )
 }
 

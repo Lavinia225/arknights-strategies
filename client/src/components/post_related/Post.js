@@ -124,7 +124,7 @@ function Post(){
                             : <button onClick={handleCreateTagButton}>Create Tag</button>}
                             {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} handleDeletedTag={handleDeletedTag} handleUpdatedTag={handleUpdatedTag}/>)}
                         </td>
-                        <td>{post.body}</td>
+                        <td id='post-body'>{post.body}</td>
                     </tr>
                 </tbody>
             </table>

@@ -140,3 +140,16 @@ table, th, td {
   padding-top: 50px;
   padding-bottom: 10px;
 }
+
+#post-edit-delete-buttons {
+    position: relative;
+    margin: auto;
+    max-width: 50%;
+    top: 100px;
+    left: 800px;
+}
+
+#edit-post {
+  margin: auto;
+  max-width: 50%;
+}
