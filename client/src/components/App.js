@@ -9,6 +9,7 @@ import NewPostForm from './post_related/NewPostForm'
 import Operators from './operator_related/Operators'
 import {OperatorProvider} from './context/operator'
 import IndividualOperator from "./operator_related/IndividualOperator";
+import Home from './Home'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <OperatorProvider>
           <Switch>
             <Route exact path="/">
+              <Home />
             </Route>
             <Route path='/login'>
               <LoginForm />

@@ -153,3 +153,18 @@ table, th, td {
   margin: auto;
   max-width: 50%;
 }
+
+#home {
+  text-align: center;
+  margin: auto;
+  max-width: 50%;
+}
+
+#home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#guidelines > li{
+  padding-bottom: 15px;
+}
