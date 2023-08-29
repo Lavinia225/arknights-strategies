@@ -168,3 +168,9 @@ table, th, td {
 #guidelines > li{
   padding-bottom: 15px;
 }
+
+#new-post-form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
