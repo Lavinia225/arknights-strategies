@@ -236,6 +236,22 @@ operators = ["W",
 "Cardigan",
 "Noir Corne"]
 
-operators.length.times do |i|
-    operator.create!(name: operators[i])
+#operators.length.times do |i|
+#    operator.create!(name: operators[i])
+#end
+
+def create_post user_id
+    post = Post.create!(body: Faker::Lorem.paragraph_by_chars(number: rand(150..800)), user_id: user_id, title: Faker::Lorem.sentence)
+
+    4.times do
+        post.post_operators.create!(operator_id: rand(1..237), potential: rand(1..6), level: "E#{rand(0..2)}-#{rand(0..90)}")
+    end
+end
+
+3.times do
+    create_post 1
+end
+
+3.times do
+    create_post 3
 end
