@@ -1,5 +1,5 @@
 class IndividualPostSerializer < ActiveModel::Serializer
-    attributes :id, :user_id, :creator_display_name, :body, :title, :created_at, :updated_at
+    attributes :id, :user_id, :creator_display_name, :body, :title
     has_many :post_operators
 
     def creator_display_name

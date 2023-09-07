@@ -17,7 +17,7 @@ function PostPreview({post}){
                 </div>
             </td>
             <td>
-                <p id='post-updated-at'>{post.updated_at}</p>
+                <p id='post-updated-at'>{post.updated_at_formatted}</p>
             </td>
         </tr>
     )

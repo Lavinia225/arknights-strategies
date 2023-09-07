@@ -14,6 +14,7 @@ function Home(){
                         <li>Use basic online etiquette.</li>
                         <li>After creating a post, tag it with the operators you used.</li>
                         <li>When it comes to operator levels, write their promotion level then level like so: "E0-45"</li>
+                        <li>Time stamps are in UTC</li>
                     </ul>
                 </div>
             </div>
