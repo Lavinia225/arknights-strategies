@@ -100,6 +100,10 @@ function Post(){
         setCreatingTag(!creatingTag)
     }
 
+    function isOwner(){
+        return post.user_id === user.id
+    }
+
     if (Object.keys(post).length < 1){
         return <p>Loading...</p>
     }
@@ -107,7 +111,7 @@ function Post(){
     return(
         <>
             {errors.map(error => <li key={error} style={{color: 'red'}}>{error}</li>)}
-            {user.id === post.user_id ? <div id='post-edit-delete-buttons'>
+            {isOwner() ? <div id='post-edit-delete-buttons'>
                 <button onClick={handleEditPostClick}>{editing ? 'Cancel Editing' : 'Edit'}</button>
                 <button onClick={handleDeletePost}>Delete</button>
             </div> : null}
@@ -120,8 +124,8 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                            {creatingTag ? <NewTagForm auth={user.id === post.user_id} stopCreating={handleCreateTagButton} handleNewTag={handleNewTag}/>
-                            : <button onClick={handleCreateTagButton}>Create Tag</button>}
+                            {creatingTag && isOwner()? <NewTagForm auth={isOwner()} stopCreating={handleCreateTagButton} handleNewTag={handleNewTag}/>
+                            : isOwner() ? <button onClick={handleCreateTagButton}>Create Tag</button> : null}
                             {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} handleDeletedTag={handleDeletedTag} handleUpdatedTag={handleUpdatedTag}/>)}
                         </td>
                         <td id='post-body'>{post.body}</td>
