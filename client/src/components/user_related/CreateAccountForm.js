@@ -32,7 +32,7 @@ function CreateAccountForm(){
 
         if(response.ok){
             setUser(data)
-            history.push('/')
+            history.goBack()
         }
         else{
             setErrors(data.errors)
