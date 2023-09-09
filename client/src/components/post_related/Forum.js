@@ -1,9 +1,11 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import {useHistory} from 'react-router-dom'
 import PostPreview  from './PostPreview'
+import {UserContext} from '../context/user'
 
 function Forum(){
     const history = useHistory()
+    const {user} = useContext(UserContext)
     const [posts, setPosts] = useState([])
     const [errors, setErrors] = useState([])
 
@@ -30,7 +32,7 @@ function Forum(){
     return(
         <div id='forum'>
             {errors.length > 0 && (errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>))}
-            <button onClick={handleCreatePostClick}>New Post</button>
+            {user.id ? <button onClick={handleCreatePostClick}>New Post</button> : null}
             <table>
                 <tbody>
                     <tr>
