@@ -1,10 +1,8 @@
-import {useContext, useState} from 'react'
+import {useState} from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
-import {OperatorContext} from '../context/operator'
 
-function NewTagForm({auth, stopCreating, handleNewTag}){
+function NewTagForm({auth, stopCreating, handleNewTag, operators}){
     const params = useParams()
-    const {operators} = useContext(OperatorContext)
     const [select, setSelect] = useState({})
     const [formData, setFormData] = useState({
         level: "E0-0",

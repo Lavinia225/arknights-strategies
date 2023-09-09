@@ -5,7 +5,7 @@ import EditPostForm from './EditPostForm'
 import PostTag from './PostTag'
 import NewTagForm from './NewTagForm'
 
-function Post(){
+function Post({operators}){
     const params = useParams()
     const history = useHistory()
     const {user} = useContext(UserContext)
@@ -105,7 +105,7 @@ function Post(){
     }
 
     if (Object.keys(post).length < 1){
-        return <p>Loading...</p>
+        return (<p>Loading...</p>)
     }
 
     return(
@@ -124,9 +124,9 @@ function Post(){
                     </tr>
                     <tr>
                         <td id='tag-container'>
-                            {creatingTag && isOwner()? <NewTagForm auth={isOwner()} stopCreating={handleCreateTagButton} handleNewTag={handleNewTag}/>
+                            {creatingTag && isOwner()? <NewTagForm auth={isOwner()} stopCreating={handleCreateTagButton} operators={operators} handleNewTag={handleNewTag}/>
                             : isOwner() ? <button onClick={handleCreateTagButton}>Create Tag</button> : null}
-                            {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} auth={user.id === post.user_id} handleDeletedTag={handleDeletedTag} handleUpdatedTag={handleUpdatedTag}/>)}
+                            {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} operators={operators} auth={user.id === post.user_id} handleDeletedTag={handleDeletedTag} handleUpdatedTag={handleUpdatedTag}/>)}
                         </td>
                         <td id='post-body'>{post.body}</td>
                     </tr>

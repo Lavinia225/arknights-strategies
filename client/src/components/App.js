@@ -52,13 +52,13 @@ function App() {
             <NewPostForm />
           </Route>
           <Route path='/posts/:id'>
-            <Post />
+            <Post operators={operators}/>
           </Route>
-          <Route path='/operators/:id'>
+          <Route path='/operators/:id'> {/*Test if App can access params to pass the correct operator by themselves down */}
             <IndividualOperator />
           </Route>
           <Route path='/operators'>
-              <Operators />
+              <Operators operators={operators}/>
           </Route>
         </Switch>
       </div>

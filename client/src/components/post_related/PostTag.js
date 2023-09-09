@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import EditTagForm from "./EditTagForm"
 
-function PostTag({operatorTag, auth, handleDeletedTag, handleUpdatedTag}){
+function PostTag({operatorTag, auth, handleDeletedTag, handleUpdatedTag, operators}){
     const [editing, setEditing] = useState(false)
 
     async function handleDelete(){
@@ -34,7 +34,7 @@ function PostTag({operatorTag, auth, handleDeletedTag, handleUpdatedTag}){
                         <p>Potential: {operatorTag.potential}</p>
                     </span>
                 </>
-                : <EditTagForm operatorTag={operatorTag} auth={auth} cancelEdit={cancelEdit} handleUpdatedTag={handleUpdatedTag}/>}
+                : <EditTagForm operatorTag={operatorTag} auth={auth} cancelEdit={cancelEdit} handleUpdatedTag={handleUpdatedTag} operators={operators}/>}
         </div>
     )
 }
