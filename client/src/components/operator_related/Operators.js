@@ -1,11 +1,9 @@
 import {useContext, useState} from 'react'
-import { OperatorContext } from "../context/operator"
 import {UserContext} from '../context/user'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import NewOperatorForm from './NewOperatorForm'
 
-function Operators(){
-    const {operators, operatorErrors} = useContext(OperatorContext)
+function Operators({operators, operatorErrors, handleNewOperator}){
     const [isCreating, setIsCreating] = useState(false)
     const {user} = useContext(UserContext)
     const history = useHistory()
@@ -30,7 +28,7 @@ function Operators(){
         return (
             <>
                 <div id='create-new-operator'>
-                    {isCreating ? <NewOperatorForm handleCreatingStatus={handleCreatingStatus}/> :
+                    {isCreating ? <NewOperatorForm handleCreatingStatus={handleCreatingStatus} handleNewOperator={handleNewOperator}/> :
                     <button onClick={()=>setIsCreating(true)}>New Operator</button>}
                 </div>
                 <ul id='operator-list'>

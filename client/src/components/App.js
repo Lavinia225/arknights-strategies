@@ -31,6 +31,15 @@ function App() {
     }
   }, [])
 
+  function handleNewOperator(response, data){
+    if (response.ok){
+      setOperators([...operators, data])
+    }
+    else{
+      setOperatorErrors([...operatorErrors, data.errors])
+    }
+  }
+
   return (
       <div className="App">
         <UserBar />
@@ -58,7 +67,7 @@ function App() {
             <IndividualOperator />
           </Route>
           <Route path='/operators'>
-              <Operators operators={operators}/>
+              <Operators operators={operators} operatorErrors={operatorErrors} handleNewOperator={handleNewOperator}/>
           </Route>
         </Switch>
       </div>
