@@ -19,18 +19,20 @@ function App() {
   useEffect(()=>{
     getOperators()
 
-    async function getOperators(){
-      const response = await fetch('/operators')
-      const data = await response.json()
-
-      if (response.ok){
-        setOperators(data)
-      }
-      else{
-        setOperatorErrors(data.errors)
-      }
-    }
   }, [])
+
+  async function getOperators(){
+    const response = await fetch('/operators')
+    const data = await response.json()
+
+    if (response.ok){
+      setOperators(data)
+      setOperatorErrors([])
+    }
+    else{
+      setOperatorErrors(data.errors)
+    }
+  }
 
   function handleNewOperator(response, data){
     if (response.ok){
@@ -71,6 +73,12 @@ function handleUpdatedOperator(operator){
   }
 }
 
+function verifyOperators(){
+  if(operators.length < 1){
+    getOperators()
+  }
+}
+
   return (
       <div className="App">
         <UserBar />
@@ -80,10 +88,10 @@ function handleUpdatedOperator(operator){
             <Home />
           </Route>
           <Route path='/login'>
-            <LoginForm />
+            <LoginForm verifyOperators={verifyOperators}/>
           </Route>
           <Route path='/signup'>
-            <CreateAccountForm />
+            <CreateAccountForm verifyOperators={verifyOperators}/>
           </Route>
           <Route exact path='/posts'>
               <Forum />

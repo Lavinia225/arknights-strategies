@@ -2,7 +2,7 @@ import {useState, useContext} from 'react'
 import {useHistory} from 'react-router-dom'
 import { UserContext } from '../context/user'
 
-function CreateAccountForm(){
+function CreateAccountForm({verifyOperators}){
     const [formData, setFormData] = useState({
         username: "",
         display_name: "",
@@ -32,6 +32,7 @@ function CreateAccountForm(){
 
         if(response.ok){
             setUser(data)
+            verifyOperators()
             history.goBack()
         }
         else{
