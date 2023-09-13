@@ -1,10 +1,8 @@
-import {useState, useContext} from 'react'
-import { OperatorContext } from '../context/operator'
+import {useState} from 'react'
 
-function EditOperatorForm({operator, handleUpdatedOperator}){
+function EditOperatorForm({operator, handlePassingUpdatedOperator}){
     const [formData, setFormData] = useState({name: operator.name})
     const [errors, setErrors] = useState([])
-    const {operators, setOperators} = useContext(OperatorContext)
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -22,21 +20,10 @@ function EditOperatorForm({operator, handleUpdatedOperator}){
         const data = await response.json()
 
         if (response.ok){
-            const updatedOperators = operators.map(findAndReplaceUpdatedOperator)
-            setOperators(updatedOperators)
-            handleUpdatedOperator(data)
+            handlePassingUpdatedOperator(data)
         }
         else{
             setErrors([...errors, data.errors])
-        }
-
-        function findAndReplaceUpdatedOperator(oldOperator){
-            if (oldOperator.id === operator.id){
-                return data
-            }
-            else{
-                return oldOperator
-            }
         }
     }
 

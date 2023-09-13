@@ -40,6 +40,36 @@ function App() {
     }
   }
 
+  async function handleDeletingOperator(id){
+    const response = await fetch(`/operators/${id}`, {method: 'DELETE'})
+
+        if (response.ok){
+            const updatedOperators = operators.filter(oldOperator => {
+                return oldOperator.id != params.id
+            })
+            setOperators(updatedOperators)
+            history.push('/operators')
+        }
+        else{
+            const data = await response.json()
+            setOperatorErrors([...operatorErrors, data.errors])
+        }
+}
+
+function handleUpdatedOperator(operator){
+  const updatedOperators = operators.map(findAndReplaceUpdatedOperator)
+  setOperators(updatedOperators)
+
+  function findAndReplaceUpdatedOperator(oldOperator){
+    if (oldOperator.id === operator.id){
+        return operator
+    }
+    else{
+        return oldOperator
+    }
+  }
+}
+
   return (
       <div className="App">
         <UserBar />
@@ -64,7 +94,7 @@ function App() {
             <Post operators={operators}/>
           </Route>
           <Route path='/operators/:id'> {/*Test if App can access params to pass the correct operator by themselves down */}
-            <IndividualOperator />
+            <IndividualOperator operators={operators} handleDelete={handleDeletingOperator} handleUpdatedOperator={handleUpdatedOperator}/>
           </Route>
           <Route path='/operators'>
               <Operators operators={operators} operatorErrors={operatorErrors} handleNewOperator={handleNewOperator}/>
