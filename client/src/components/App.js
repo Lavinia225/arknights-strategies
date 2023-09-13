@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import UserBar from './user_related/UserBar'
 import LoginForm from './user_related/LoginForm'
 import CreateAccountForm from "./user_related/CreateAccountForm";
@@ -12,6 +12,7 @@ import IndividualOperator from "./operator_related/IndividualOperator";
 import Home from './Home'
 
 function App() {
+  const history = useHistory()
   const [operators, setOperators] = useState([])
   const [operatorErrors, setOperatorErrors] = useState([])
 
@@ -45,7 +46,7 @@ function App() {
 
         if (response.ok){
             const updatedOperators = operators.filter(oldOperator => {
-                return oldOperator.id != params.id
+                return oldOperator.id != id
             })
             setOperators(updatedOperators)
             history.push('/operators')

@@ -1,10 +1,8 @@
-import {useState, useContext} from 'react'
+import {useState} from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
-import { OperatorContext } from '../context/operator'
 
-function EditTagForm({operatorTag, cancelEdit, handleUpdatedTag}){
+function EditTagForm({operatorTag, cancelEdit, handleUpdatedTag, operators}){
     const params = useParams()
-    const {operators} = useContext(OperatorContext)
     const [select, setSelect] = useState(operatorTag.operator.name)
     const [formData, setFormData] = useState({
         level: operatorTag.level,

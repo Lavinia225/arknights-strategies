@@ -6,12 +6,11 @@ import { UserContext } from "../context/user"
 function IndividualOperator({operators, handleDelete, handleUpdatedOperator}){
     const params = useParams()
     const [editing, setEditing] = useState(false)
-    const [errors, setErrors] = useState([])
     const [operator, setOperator] = useState({name: ""})
     const {user} = useContext(UserContext)
 
     useEffect(()=>{
-        currentOperator = operators.find(op => op.id === params.id)
+        const currentOperator = operators.find(({id}) => id == params.id)
         setOperator(currentOperator)
     }, [])
 
@@ -21,6 +20,7 @@ function IndividualOperator({operators, handleDelete, handleUpdatedOperator}){
 
     function handlePassingUpdatedOperator(updatedOperator){
         handleUpdatedOperator(updatedOperator)
+        setOperator(updatedOperator)
         setEditing(false)
     }
 
@@ -30,7 +30,6 @@ function IndividualOperator({operators, handleDelete, handleUpdatedOperator}){
     
     return(
         <>
-        {errors.length > 0 ? errors.map(error => <p key={error} style={{color: 'red'}}>{error}</p>) : null}
         {editing ? <EditOperatorForm operator={operator} handlePassingUpdatedOperator={handlePassingUpdatedOperator}/> :
             <div id='individual-operator'>
                 <p>{operator.name}</p>
