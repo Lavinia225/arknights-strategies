@@ -126,7 +126,7 @@ function Post({operators}){
                         <td id='tag-container'>
                             {creatingTag && isOwner()? <NewTagForm auth={isOwner()} stopCreating={handleCreateTagButton} operators={operators} handleNewTag={handleNewTag}/>
                             : isOwner() ? <button onClick={handleCreateTagButton}>Create Tag</button> : null}
-                            {post.post_operators.map(tag => <PostTag key={tag.operator.name} operatorTag={tag} operators={operators} auth={user.id === post.user_id} handleDeletedTag={handleDeletedTag} handleUpdatedTag={handleUpdatedTag}/>)}
+                            {post.post_operators.map(tag => <PostTag key={tag.operator.name + Math.random()} operatorTag={tag} operators={operators} auth={user.id === post.user_id} handleDeletedTag={handleDeletedTag} handleUpdatedTag={handleUpdatedTag}/>)}
                         </td>
                         <td id='post-body'>{post.body}</td>
                     </tr>
