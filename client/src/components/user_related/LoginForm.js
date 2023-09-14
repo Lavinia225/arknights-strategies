@@ -3,7 +3,6 @@ import {useContext} from 'react'
 import { UserContext } from '../context/user'
 import {useHistory} from 'react-router-dom'
 
-
 function LoginForm({verifyOperators}){
     const [formData, setFormData] = useState({
         username: "",

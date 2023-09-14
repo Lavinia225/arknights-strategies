@@ -6,7 +6,13 @@ Arknights Strategies is a forum for sharing strategies used to complete particul
 
 You need an account to properly do anything aside from look at the home page. Register in the top right corner, and note that forgotten passwords can not be recovered. 
 
--gif goes here-
+Afterwards, within the forum you can create posts with the New Post button, or view posts by clicking in their table box. 
+
+For posts which are your own you can edit or delete them with the respective button, or tag them with operators used in your particular strategy as well.
+
+![Usage Gif](./demonstration.gif)
+
+Users with the correct access level can also modify, add, and delete the operators that can be selected for post tags.
 
 
 
